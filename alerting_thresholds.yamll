@@ -1,0 +1,21 @@
+alerts:
+  - name: trust_degraded_to_constrained
+    condition: trust_level == CONSTRAINED
+    severity: HIGH
+    message: "Security in constrained mode - only read operations allowed"
+  
+  - name: trust_degraded_to_no_trust
+    condition: trust_level == NO_TRUST
+    severity: CRITICAL
+    message: "No trust - security systems unreachable"
+  
+  - name: authorization_correctness_low
+    condition: authorization_correctness_rate < 0.95
+    window: 5min
+    severity: HIGH
+    message: "Authorization correctness below 95%"
+  
+  - name: privilege_escalation_detected
+    condition: privilege_escalation.successful > 0
+    severity: CRITICAL
+    message: "Privilege escalation not blocked"
